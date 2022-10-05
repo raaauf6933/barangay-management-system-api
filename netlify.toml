@@ -1,3 +1,6 @@
+[Settings]
+  ID = "929dd18e-5f45-4182-a2ec-48931365af27"
+
 [build]
     functions = "functions"
 
