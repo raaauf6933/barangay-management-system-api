@@ -7,9 +7,13 @@ const router = express.Router();
 const Authentication = require("./controller/authentication");
 
 // middleware
-const auth = require("./middleware/auth");
+// const auth = require("./middleware/auth");
 
 router.get("/auth", Authentication);
+
+router.get("/", (_req, res) => {
+  res.send("<h1>API is live!</h1>");
+});
 
 app.use("/", router);
 
