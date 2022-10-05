@@ -11,8 +11,10 @@ const Authentication = require("./controller/authentication");
 
 router.get("/auth", Authentication);
 
-router.get("/", (_req, res) => {
-  res.send("<h1>API is live!</h1>");
+router.get("/test_endpoint", (_req, res) => {
+  res.json({
+    message: "API is live!",
+  });
 });
 
 app.use("/", router);
