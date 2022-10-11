@@ -17,6 +17,7 @@ let sequelize = new Sequelize(
     dialect: "mysql",
     logging: false,
     dialectModule: mysql2,
+    port: "3306",
   }
 );
 
