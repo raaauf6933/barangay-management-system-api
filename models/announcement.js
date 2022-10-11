@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Announcement.init(
     {
       title: DataTypes.STRING,
-      content: DataTypes.STRING,
+      content: DataTypes.TEXT("long"),
       status: DataTypes.BOOLEAN,
       isDeleted: DataTypes.BOOLEAN,
       createdBy: DataTypes.INTEGER,
