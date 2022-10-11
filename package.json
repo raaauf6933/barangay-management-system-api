@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "netlify dev && npm run lint",
+    "build": "sequelize-cli db:migrate",
     "prod-deploy": "netlify deploy --prod",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
@@ -30,6 +31,7 @@
     "netlify-cli": "^12.0.6",
     "netlify-lambda": "^2.0.15",
     "sequelize": "^6.24.0",
+    "sequelize-cli": "^6.5.1",
     "serverless-http": "^3.0.2"
   }
 }
