@@ -9,13 +9,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
   },
-  "_moduleAliases": {
-    "@root": ".",
-    "@controller": "./functions/controller",
-    "@middleware": "./functions/middleware",
-    "@utils": "./functions",
-    "@db": "./models/index.js"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
