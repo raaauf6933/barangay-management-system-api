@@ -9,6 +9,7 @@ const Authentication = require("./controller/authentication");
 const GetAnnouncements = require("./controller/Announcement/get_announcements");
 const GetAnnouncement = require("./controller/Announcement/get_announcement");
 const EditAnnouncement = require("./controller/Announcement/edit_annoncement");
+const CreateResidentIssuance = require("./controller/Issuance/create_resident_issuance");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -29,6 +30,9 @@ router.post("/announcement/create_announcement", CreateAnnouncement);
 router.post("/announcement/edit_announcement", EditAnnouncement);
 router.get("/announcement/get_announcements", GetAnnouncements);
 router.get("/announcement/get_announcement", GetAnnouncement);
+
+// Issuance
+router.post("/issuance/create_resident_issuance", CreateResidentIssuance);
 
 router.get("/test_endpoint", (_req, res) => {
   res.json({

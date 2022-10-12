@@ -57,6 +57,14 @@ db.Sequelize = Sequelize;
 
 db.Announcement = require("./announcement")(sequelize, Sequelize.DataTypes);
 db.Images = require("./images")(sequelize, Sequelize.DataTypes);
+db.IssuanceResident = require("./issuance_resident")(
+  sequelize,
+  Sequelize.DataTypes
+);
+db.ServiceTransaction = require("./service_transactions")(
+  sequelize,
+  Sequelize.DataTypes
+);
 
 db.sequelize.sync({ force: false });
 

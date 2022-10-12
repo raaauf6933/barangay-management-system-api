@@ -21,7 +21,7 @@ const UploadImage = async (files, path_folder) => {
 
       uploaded_images.push({ src: upload_result.secure_url });
     } catch (error) {
-      console.log(error);
+      console.log("uplod_error", error);
       return { error };
     }
   }
