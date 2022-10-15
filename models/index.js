@@ -65,6 +65,7 @@ db.ServiceTransaction = require("./service_transactions")(
   sequelize,
   Sequelize.DataTypes
 );
+db.Residents = require("./residents")(sequelize, Sequelize.DataTypes);
 
 db.sequelize.sync({ force: false });
 
