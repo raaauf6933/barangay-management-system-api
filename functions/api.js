@@ -14,6 +14,11 @@ const GetResidentIssuances = require("./controller/Issuance/get_resident_issuanc
 const GetResidentIssuance = require("./controller/Issuance/get_resident_issuance");
 const EditResidentIssuance = require("./controller/Issuance/edit_resident_issuance");
 const GetResidents = require("./controller/Residents/get_residents");
+const GetPositions = require("./controller/Positions/get_positions");
+const CreatePosition = require("./controller/Positions/create_positon");
+const GetPosition = require("./controller/Positions/get_position");
+const EditPosition = require("./controller/Positions/edit_position");
+const GetOfficials = require("./controller/Officials/get_officials");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -43,6 +48,14 @@ router.get("/issuance/get_resident_issuance", GetResidentIssuance);
 
 // Residents
 router.get("/residents/get_residents", GetResidents);
+
+// Positions
+router.post("/positions/create_positon", CreatePosition);
+router.post("/positions/edit_position", EditPosition);
+router.get("/positions/get_positions", GetPositions);
+router.get("/positions/get_position", GetPosition);
+
+router.get("/officials/get_officials", GetOfficials);
 
 router.get("/test_endpoint", (_req, res) => {
   res.json({
