@@ -3,7 +3,7 @@ const db = require("./../../../models/");
 const UploadImage = require("./../../utils/uploadImage");
 const Officials = db.Officials;
 
-const CreateOfficial = async (req, res) => {
+const EditOfficial = async (req, res) => {
   try {
     const { data, files } = await parseMultipartForm(req);
 
@@ -17,18 +17,25 @@ const CreateOfficial = async (req, res) => {
       }
     }
 
-    const result = await Officials.create({
-      position_id: data.position,
-      first_name: data.first_name,
-      last_name: data.last_name,
-      photo_url:
-        uploaded_images && uploaded_images?.length > 0
-          ? uploaded_images[0].src
-          : null,
-      contact_no: data?.contact_no ? data?.contact_no : null,
-      email: data?.email ? data?.email : null,
-      status: data.status,
-    });
+    const result = await Officials.update(
+      {
+        position_id: data.position,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        photo_url:
+          uploaded_images && uploaded_images?.length > 0
+            ? uploaded_images[0].src
+            : null,
+        contact_no: data?.contact_no ? data?.contact_no : null,
+        email: data?.email ? data?.email : null,
+        status: data.status,
+      },
+      {
+        where: {
+          id: data.id,
+        },
+      }
+    );
 
     res.status(200).json({
       result,
@@ -40,4 +47,4 @@ const CreateOfficial = async (req, res) => {
   }
 };
 
-module.exports = CreateOfficial;
+module.exports = EditOfficial;

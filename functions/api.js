@@ -19,6 +19,9 @@ const CreatePosition = require("./controller/Positions/create_positon");
 const GetPosition = require("./controller/Positions/get_position");
 const EditPosition = require("./controller/Positions/edit_position");
 const GetOfficials = require("./controller/Officials/get_officials");
+const CreateOfficial = require("./controller/Officials/create_officials");
+const GetOfficial = require("./controller/Officials/get_official");
+const EditOfficial = require("./controller/Officials/edit_official");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -55,6 +58,10 @@ router.post("/positions/edit_position", EditPosition);
 router.get("/positions/get_positions", GetPositions);
 router.get("/positions/get_position", GetPosition);
 
+// Officials
+router.post("/officials/create_official", CreateOfficial);
+router.post("/officials/edit_official", EditOfficial);
+router.get("/officials/get_official", GetOfficial);
 router.get("/officials/get_officials", GetOfficials);
 
 router.get("/test_endpoint", (_req, res) => {

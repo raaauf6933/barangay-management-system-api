@@ -2,26 +2,23 @@ const db = require("../../../models");
 const Officials = db.Officials;
 const Positions = db.Positions;
 
-const GetOfficials = async (req, res) => {
+const GetOfficial = async (req, res) => {
   Officials.belongsTo(Positions, {
     foreignKey: "position_id",
   });
 
-  console.log(req.query);
-
   try {
-    const officials = await Officials.findAll({
+    const official = await Officials.findAll({
       include: {
         model: Positions,
       },
       where: {
-        ...(req?.query?.status
-          ? { status: req?.query?.status === "true" ? true : false }
-          : {}),
+        id: req.query.id,
       },
     });
 
-    res.status(200).json({ officials });
+    if (official.length === 0) throw Error("Not Found");
+    res.status(200).json({ official: official[0] });
   } catch (error) {
     res.status(400).json({
       message: error.message,
@@ -29,4 +26,4 @@ const GetOfficials = async (req, res) => {
   }
 };
 
-module.exports = GetOfficials;
+module.exports = GetOfficial;

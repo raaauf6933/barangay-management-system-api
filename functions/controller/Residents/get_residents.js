@@ -5,24 +5,36 @@ const Residents = db.Residents;
 const GetResidents = async (req, res) => {
   const limit = req.query?.limit;
   const name = req.query?.name;
-  console.log(req.query?.name);
+
   try {
     const residents = await Residents.findAll({
-      limit: limit,
-      where: {
-        [Op.or]: [
-          {
-            first_name: {
-              [Op.substring]: `${name}`,
+      ...(limit ? { limit: limit } : {}),
+      ...(name
+        ? {
+            where: {
+              [Op.or]: [
+                {
+                  ...(name
+                    ? {
+                        first_name: {
+                          [Op.substring]: `${name}`,
+                        },
+                      }
+                    : {}),
+                },
+                {
+                  ...(name
+                    ? {
+                        first_name: {
+                          [Op.last_name]: `${name}`,
+                        },
+                      }
+                    : {}),
+                },
+              ],
             },
-          },
-          {
-            last_name: {
-              [Op.substring]: `${name}`,
-            },
-          },
-        ],
-      },
+          }
+        : {}),
     });
 
     res.status(200).json({ residents });
