@@ -22,6 +22,9 @@ const GetOfficials = require("./controller/Officials/get_officials");
 const CreateOfficial = require("./controller/Officials/create_officials");
 const GetOfficial = require("./controller/Officials/get_official");
 const EditOfficial = require("./controller/Officials/edit_official");
+const CreateResident = require("./controller/Residents/create_resident");
+const GetResident = require("./controller/Residents/get_resident");
+const EditResident = require("./controller/Residents/edit_resident");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -50,6 +53,9 @@ router.get("/issuance/get_resident_issuances", GetResidentIssuances);
 router.get("/issuance/get_resident_issuance", GetResidentIssuance);
 
 // Residents
+router.post("/residents/create_resident", CreateResident);
+router.post("/residents/edit_resident", EditResident);
+router.get("/residents/get_resident", GetResident);
 router.get("/residents/get_residents", GetResidents);
 
 // Positions

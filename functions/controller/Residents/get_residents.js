@@ -25,8 +25,8 @@ const GetResidents = async (req, res) => {
                 {
                   ...(name
                     ? {
-                        first_name: {
-                          [Op.last_name]: `${name}`,
+                        last_name: {
+                          [Op.substring]: `${name}`,
                         },
                       }
                     : {}),
