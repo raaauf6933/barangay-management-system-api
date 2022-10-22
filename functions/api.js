@@ -25,6 +25,11 @@ const EditOfficial = require("./controller/Officials/edit_official");
 const CreateResident = require("./controller/Residents/create_resident");
 const GetResident = require("./controller/Residents/get_resident");
 const EditResident = require("./controller/Residents/edit_resident");
+const GetUsers = require("./controller/Users/get_users");
+const CreateUser = require("./controller/Users/create_user");
+const GetUser = require("./controller/Users/get_user");
+const EditUser = require("./controller/Users/edit_user");
+const Login = require("./controller/Auth/login");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -39,6 +44,8 @@ app.use(
 );
 
 router.get("/auth", Authentication);
+
+router.post("/auth/login", Login);
 
 // Announcements
 router.post("/announcement/create_announcement", CreateAnnouncement);
@@ -69,6 +76,12 @@ router.post("/officials/create_official", CreateOfficial);
 router.post("/officials/edit_official", EditOfficial);
 router.get("/officials/get_official", GetOfficial);
 router.get("/officials/get_officials", GetOfficials);
+
+// Users
+router.post("/users/create_user", CreateUser);
+router.post("/users/edit_user", EditUser);
+router.get("/users/get_user", GetUser);
+router.get("/users/get_users", GetUsers);
 
 router.get("/test_endpoint", (_req, res) => {
   res.json({

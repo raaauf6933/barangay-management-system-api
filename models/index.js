@@ -69,6 +69,8 @@ db.Residents = require("./residents")(sequelize, Sequelize.DataTypes);
 db.ServiceTypes = require("./service_types")(sequelize, Sequelize.DataTypes);
 db.Positions = require("./positions")(sequelize, Sequelize.DataTypes);
 db.Officials = require("./officials")(sequelize, Sequelize.DataTypes);
+db.Roles = require("./roles")(sequelize, Sequelize.DataTypes);
+db.Users = require("./users")(sequelize, Sequelize.DataTypes);
 
 db.sequelize.sync({ force: false });
 
