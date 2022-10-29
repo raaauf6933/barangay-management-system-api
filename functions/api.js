@@ -30,6 +30,9 @@ const CreateUser = require("./controller/Users/create_user");
 const GetUser = require("./controller/Users/get_user");
 const EditUser = require("./controller/Users/edit_user");
 const Login = require("./controller/Auth/login");
+const auth = require("./middleware/auth");
+const GetMyProfile = require("./controller/MyProfile/get_myprofile");
+const UpdateProfile = require("./controller/MyProfile/update_profile");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -82,6 +85,10 @@ router.post("/users/create_user", CreateUser);
 router.post("/users/edit_user", EditUser);
 router.get("/users/get_user", GetUser);
 router.get("/users/get_users", GetUsers);
+
+// MyProfile
+router.get("/my_profile/get_profile", auth, GetMyProfile);
+router.post("/my_profile/update_profile", auth, UpdateProfile);
 
 router.get("/test_endpoint", (_req, res) => {
   res.json({

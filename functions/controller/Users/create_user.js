@@ -1,13 +1,20 @@
 const bcrypt = require("bcrypt");
 const db = require("./../../../models/");
 const Users = db.Users;
+const Residents = db.Residents;
 
 const CreateUser = async (req, res) => {
   const body = JSON.parse(req.apiGateway.event.body);
 
   let verifyEmail = await Users.findOne({ where: { email: body.email } });
 
-  if (verifyEmail)
+  const validate_email = await Residents.findAll({
+    where: {
+      email: body.email,
+    },
+  });
+
+  if (verifyEmail || validate_email.length > 0)
     return res
       .status(400)
       .send({ status: "failed", message: "Email already registered." });
