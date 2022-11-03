@@ -7,8 +7,6 @@ const GetOfficials = async (req, res) => {
     foreignKey: "position_id",
   });
 
-  console.log(req.query);
-
   try {
     const officials = await Officials.findAll({
       include: {

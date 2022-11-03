@@ -71,6 +71,7 @@ db.Positions = require("./positions")(sequelize, Sequelize.DataTypes);
 db.Officials = require("./officials")(sequelize, Sequelize.DataTypes);
 db.Roles = require("./roles")(sequelize, Sequelize.DataTypes);
 db.Users = require("./users")(sequelize, Sequelize.DataTypes);
+db.Blotter = require("./blotters")(sequelize, Sequelize.DataTypes);
 
 db.sequelize.sync({ force: false });
 
