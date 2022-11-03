@@ -33,6 +33,10 @@ const Login = require("./controller/Auth/login");
 const auth = require("./middleware/auth");
 const GetMyProfile = require("./controller/MyProfile/get_myprofile");
 const UpdateProfile = require("./controller/MyProfile/update_profile");
+const CreateBlotter = require("./controller/Blotter/create_blotter");
+const GetBlotter = require("./controller/Blotter/get_blotter");
+const GetBlotters = require("./controller/Blotter/get_blotters");
+const EditBlotter = require("./controller/Blotter/edit_blotter");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -61,6 +65,12 @@ router.post("/issuance/create_resident_issuance", CreateResidentIssuance);
 router.post("/issuance/edit_resident_issuance", EditResidentIssuance);
 router.get("/issuance/get_resident_issuances", GetResidentIssuances);
 router.get("/issuance/get_resident_issuance", GetResidentIssuance);
+
+// Blotter
+router.post("/blotter/create_blotter_report", CreateBlotter);
+router.post("/blotter/edit_blotter_report", EditBlotter);
+router.get("/blotter/get_blotter_report", GetBlotter);
+router.get("/blotter/get_blotter_reports", GetBlotters);
 
 // Residents
 router.post("/residents/create_resident", CreateResident);

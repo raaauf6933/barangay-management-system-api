@@ -13,6 +13,11 @@ const CreateResident = async (req, res) => {
     body.last_name +
     moment(body.birth_date).format("YYYY");
 
+  const formatPassword = password_pattern
+    .toLowerCase()
+    .trim()
+    .replace(/\s/g, "");
+
   try {
     const validate_email = await Residents.findAll({
       where: {
@@ -29,7 +34,7 @@ const CreateResident = async (req, res) => {
     if (validate_email.length > 0 || validate_email_users.length > 0)
       throw Error("Email already taken");
 
-    const password = await bcrypt.hash(password_pattern.toLowerCase(), salt);
+    const password = await bcrypt.hash(formatPassword, salt);
 
     const result = await Residents.create({
       ...body,
