@@ -1,18 +1,9 @@
 const db = require("./../../../models/");
 const Blotter = db.Blotter;
-const Residents = db.Residents;
 
 const GetBlotters = async (req, res) => {
-  Blotter.belongsTo(Residents, {
-    foreignKey: "complainant",
-  });
-
   try {
-    const result = await Blotter.findAll({
-      include: {
-        model: Residents,
-      },
-    });
+    const result = await Blotter.findAll({});
 
     res.status(200).json({
       blotter: result,

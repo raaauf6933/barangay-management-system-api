@@ -7,10 +7,12 @@ const CreateBlotter = async (req, res) => {
   console.log(body);
   try {
     const new_data = {
-      complainant: body.resident.value,
+      complainant: body.complainant,
       respondent: body.respondent,
       in_charge: body.incharge,
       statement: body.statement,
+      respondent_statement: body.respondent_statement,
+      resolution: body.resolution,
       status: "PENDING",
     };
 
