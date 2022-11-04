@@ -3,7 +3,13 @@ const Positions = db.Positions;
 
 const GetPositions = async (req, res) => {
   try {
-    const positions = await Positions.findAll({});
+    const positions = await Positions.findAll({
+      where: {
+        ...(req?.query?.status
+          ? { status: req?.query?.status === "1" ? true : false }
+          : {}),
+      },
+    });
 
     res.status(200).json({ positions });
   } catch (error) {
