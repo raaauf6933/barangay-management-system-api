@@ -30,6 +30,11 @@ const GetResidentIssuances = async (req, res) => {
           model: ServiceTypes,
         },
       ],
+      where: {
+        ...(req?.query?.resident_id
+          ? { resident_id: req.query.resident_id }
+          : {}),
+      },
     });
 
     res.status(200).json({ issuance_residents });

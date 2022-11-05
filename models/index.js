@@ -72,6 +72,14 @@ db.Officials = require("./officials")(sequelize, Sequelize.DataTypes);
 db.Roles = require("./roles")(sequelize, Sequelize.DataTypes);
 db.Users = require("./users")(sequelize, Sequelize.DataTypes);
 db.Blotter = require("./blotters")(sequelize, Sequelize.DataTypes);
+db.ContentSettings = require("./content_settings")(
+  sequelize,
+  Sequelize.DataTypes
+);
+db.ContentSettingsImages = require("./content_settings_images")(
+  sequelize,
+  Sequelize.DataTypes
+);
 
 db.sequelize.sync({ force: false });
 

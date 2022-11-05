@@ -1,5 +1,6 @@
 const db = require("../../../models");
 const Users = db.Users;
+const Residents = db.Residents;
 const Roles = db.Roles;
 
 const GetMyProfile = async (req, res) => {
@@ -15,6 +16,16 @@ const GetMyProfile = async (req, res) => {
         include: {
           model: Roles,
         },
+        where: {
+          id: user.id,
+        },
+      });
+
+      return res.status(200).json({ user: users[0] });
+    }
+
+    if (user.role === "Resident") {
+      const users = await Residents.findAll({
         where: {
           id: user.id,
         },
