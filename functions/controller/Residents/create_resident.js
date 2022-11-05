@@ -38,6 +38,10 @@ const CreateResident = async (req, res) => {
 
     const result = await Residents.create({
       ...body,
+      first_name: body.first_name.trim(),
+      last_name: body.last_name.trim(),
+      middle_name: body.middle_name.trim(),
+      email: body.email.trim(),
       password,
     });
     res.status(200).json({
