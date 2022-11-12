@@ -39,6 +39,7 @@ const GetBlotters = require("./controller/Blotter/get_blotters");
 const EditBlotter = require("./controller/Blotter/edit_blotter");
 const EditHomePageBg = require("./controller/ContentSettings/edit_home_page_bg");
 const GetHomePageBg = require("./controller/ContentSettings/get_home_page_bg");
+const GetAdminDashboard = require("./controller/Dashboard/get_admin_dashboard");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -104,6 +105,8 @@ router.post("/my_profile/update_profile", auth, UpdateProfile);
 
 router.post("/content_settings/edit_home_page_bg", EditHomePageBg);
 router.get("/content_settings/get_home_bg", GetHomePageBg);
+
+router.get("/dashboard/get_admin_dashboard", GetAdminDashboard);
 
 router.get("/test_endpoint", (_req, res) => {
   res.json({
