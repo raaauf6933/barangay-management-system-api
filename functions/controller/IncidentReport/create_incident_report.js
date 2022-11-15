@@ -16,9 +16,9 @@ const CreateIncidentReport = async (req, res) => {
 
     SendEmail({
       to: "brgy.845.pandacan@gmail.com",
-      subject: `INCIDENT REPORT | ${body.email}`,
+      subject: `INCIDENT REPORT | ${body.subject}`,
       html: `<html> 
-      <p>Hello</p>
+      <p>Hello,</p>
 
       <p>New Incident Report has been submited.</p>
 
