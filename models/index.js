@@ -80,6 +80,10 @@ db.ContentSettingsImages = require("./content_settings_images")(
   sequelize,
   Sequelize.DataTypes
 );
+db.IncidentReports = require("./incident_report")(
+  sequelize,
+  Sequelize.DataTypes
+);
 
 db.sequelize.sync({ force: false });
 

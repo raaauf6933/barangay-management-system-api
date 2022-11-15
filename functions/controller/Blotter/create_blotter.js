@@ -9,7 +9,8 @@ const CreateBlotter = async (req, res) => {
     const new_data = {
       complainant: body.complainant,
       respondent: body.respondent,
-      in_charge: body.incharge,
+      in_charge: body.incharge === "OTHER" ? null : body.incharge,
+      other_incharge: body.incharge !== "OTHER" ? null : body.other_incharge,
       statement: body.statement,
       respondent_statement: body.respondent_statement,
       resolution: body.resolution,
