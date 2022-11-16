@@ -16,6 +16,7 @@ const GetUsers = async (req, res) => {
         ...(req?.query?.status
           ? { status: req?.query?.status === "true" ? true : false }
           : {}),
+        role_id: 1,
       },
     });
 

@@ -40,6 +40,12 @@ const EditBlotter = require("./controller/Blotter/edit_blotter");
 const EditHomePageBg = require("./controller/ContentSettings/edit_home_page_bg");
 const GetHomePageBg = require("./controller/ContentSettings/get_home_page_bg");
 const GetAdminDashboard = require("./controller/Dashboard/get_admin_dashboard");
+const GetIncidentReports = require("./controller/IncidentReport/get_incident_reports");
+const GetIncidentReport = require("./controller/IncidentReport/get_incident_report");
+const CreateIncidentReport = require("./controller/IncidentReport/create_incident_report");
+const IncidentReportUpdate = require("./controller/IncidentReport/incient_report_update");
+const EditContentSettingsColor = require("./controller/ContentSettings/edit_content_settings_color");
+const GetColor = require("./controller/ContentSettings/get_color");
 // const parseMultipartForm = require("./utils/parseMultipartForm");
 
 // middleware
@@ -105,8 +111,16 @@ router.post("/my_profile/update_profile", auth, UpdateProfile);
 
 router.post("/content_settings/edit_home_page_bg", EditHomePageBg);
 router.get("/content_settings/get_home_bg", GetHomePageBg);
+router.post("/content_settings/update_color", EditContentSettingsColor);
+router.get("/content_settings/get_color", GetColor);
 
 router.get("/dashboard/get_admin_dashboard", GetAdminDashboard);
+
+router.get("/incident_report/get_incident_reports", GetIncidentReports);
+router.get("/incident_report/get_incident_report", GetIncidentReport);
+router.post("/incident_report/create_incident_report", CreateIncidentReport);
+
+router.post("/incident_report/incient_report_update", IncidentReportUpdate);
 
 router.get("/test_endpoint", (_req, res) => {
   res.json({

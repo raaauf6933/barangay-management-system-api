@@ -11,13 +11,33 @@ const UpdateProfile = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const new_password = await bcrypt.hash(body.new_password, salt);
 
-    if (["Admin"].includes(user.role)) {
+    if (["Admin", "Super_Admin"].includes(user.role)) {
       const user_ = await Users.findOne({
         where: {
           id: user.id,
         },
       });
       // validate current password
+      console.log(user_.toJSON());
+      const check_no_email_change = user_.toJSON().email === body.email;
+
+      const validate_email = await Residents.findAll({
+        where: {
+          email: body.email,
+        },
+      });
+
+      const validate_email_users = await Users.findAll({
+        where: {
+          email: body.email,
+        },
+      });
+
+      if (
+        (validate_email.length > 0 && !check_no_email_change) ||
+        validate_email_users.length > 0
+      )
+        throw Error("Email already taken");
 
       const validPassword = await bcrypt.compare(
         body.current_password,
@@ -30,7 +50,12 @@ const UpdateProfile = async (req, res) => {
           .send({ status: "failed", message: "Invalid Current Password" });
 
       const users = await Users.update(
-        { password: new_password },
+        {
+          password: new_password,
+          first_name: body.first_name,
+          last_name: body.last_name,
+          email: body.email,
+        },
         {
           where: {
             id: user.id,
@@ -47,6 +72,26 @@ const UpdateProfile = async (req, res) => {
           id: user.id,
         },
       });
+
+      const check_no_email_change = user_.toJSON().email === body.email;
+
+      const validate_email = await Residents.findAll({
+        where: {
+          email: body.email,
+        },
+      });
+
+      const validate_email_users = await Users.findAll({
+        where: {
+          email: body.email,
+        },
+      });
+
+      if (
+        (validate_email.length > 0 && !check_no_email_change) ||
+        validate_email_users.length > 0
+      )
+        throw Error("Email already taken");
       // validate current password
 
       const validPassword = await bcrypt.compare(
@@ -60,7 +105,12 @@ const UpdateProfile = async (req, res) => {
           .send({ status: "failed", message: "Invalid Current Password" });
 
       const users = await Residents.update(
-        { password: new_password },
+        {
+          password: new_password,
+          first_name: body.first_name,
+          last_name: body.last_name,
+          email: body.email,
+        },
         {
           where: {
             id: user.id,
@@ -70,8 +120,6 @@ const UpdateProfile = async (req, res) => {
 
       return res.status(200).json({ user: users[0] });
     }
-
-    res.status(200).json({ user: "test" });
   } catch (error) {
     res.status(400).json({
       message: error.message,

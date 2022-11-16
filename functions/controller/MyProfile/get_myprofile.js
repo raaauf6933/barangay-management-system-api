@@ -11,7 +11,7 @@ const GetMyProfile = async (req, res) => {
   });
 
   try {
-    if (["Admin"].includes(user.role)) {
+    if (["Admin", "Super_Admin"].includes(user.role)) {
       const users = await Users.findAll({
         include: {
           model: Roles,
